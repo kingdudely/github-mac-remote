@@ -215,34 +215,34 @@ jobs:
         run: |
           mkdir -p credentials
           cat > credentials/connection-info.txt << 'CREDENTIALS'
-╔══════════════════════════════════════════════════════╗
-║         macOS VNC Connection via Tailscale           ║
-╠══════════════════════════════════════════════════════╣
-CREDENTIALS
-
-          # Append dynamic values (not using quoted heredoc so vars expand)
-          cat >> credentials/connection-info.txt << EOF
-
-  Tailscale IP:  ${TAILSCALE_IP}
-  VNC Port:      5900
-  Username:      ${VNC_USER}
-  Password:      ${VNC_PASSWORD}
-
-  How to connect:
-  1. Install Tailscale on YOUR machine
-  2. Join the same Tailscale network
-  3. Open your VNC client:
-     - macOS: Finder → Go → Connect to Server
-       vnc://${TAILSCALE_IP}:5900
-     - Windows: Use RealVNC or TightVNC
-       ${TAILSCALE_IP}:5900
-     - Linux: Use Remmina or vncviewer
-       ${TAILSCALE_IP}:5900
-
-  Login with Username and Password above
-
-╚══════════════════════════════════════════════════════╝
-EOF
+          ╔══════════════════════════════════════════════════════╗
+          ║         macOS VNC Connection via Tailscale           ║
+          ╠══════════════════════════════════════════════════════╣
+          CREDENTIALS
+          
+                    # Append dynamic values (not using quoted heredoc so vars expand)
+                    cat >> credentials/connection-info.txt << EOF
+          
+            Tailscale IP:  ${TAILSCALE_IP}
+            VNC Port:      5900
+            Username:      ${VNC_USER}
+            Password:      ${VNC_PASSWORD}
+          
+            How to connect:
+            1. Install Tailscale on YOUR machine
+            2. Join the same Tailscale network
+            3. Open your VNC client:
+               - macOS: Finder → Go → Connect to Server
+                 vnc://${TAILSCALE_IP}:5900
+               - Windows: Use RealVNC or TightVNC
+                 ${TAILSCALE_IP}:5900
+               - Linux: Use Remmina or vncviewer
+                 ${TAILSCALE_IP}:5900
+          
+            Login with Username and Password above
+          
+          ╚══════════════════════════════════════════════════════╝
+          EOF
           echo "✅ Credentials saved to artifact"
 
       - name: Upload credentials artifact
